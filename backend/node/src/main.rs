@@ -3,6 +3,7 @@
 
 
 use warp::Filter;
+use warp::http::Method;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 mod claim;
@@ -70,8 +71,12 @@ async fn main() {
     // Claim endpoint (POST /claim)
     let claim = claim::claim_route(client.clone());
 
-    // Combine routes
-    let routes = mine.or(claim);
+    // Combine routes and add CORS
+    let cors = warp::cors()
+        .allow_any_origin()
+        .allow_methods(&[Method::GET, Method::POST, Method::OPTIONS])
+        .allow_headers(vec!["Content-Type"]);
+    let routes = mine.or(claim).with(cors);
 
     // Start server
     use std::net::SocketAddr;
