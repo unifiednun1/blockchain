@@ -22,7 +22,7 @@ export default function Dashboard() {
   // Fetch unclaimed NUNs
   const fetchUnclaimed = async () => {
     try {
-      const res = await fetch(`http://localhost:3030/unclaimed?session_id=${getSessionId()}`);
+  const res = await fetch(`https://blockchain-ps21.onrender.com/unclaimed?session_id=${getSessionId()}`);
       if (res.ok) {
         const data = await res.json();
         setUnclaimed(data.unclaimed || 0);
@@ -41,7 +41,7 @@ export default function Dashboard() {
     }
     setStatus('Claiming...');
     try {
-      const res = await fetch('http://localhost:3030/claim', {
+  const res = await fetch('https://blockchain-ps21.onrender.com/claim', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ session_id: getSessionId(), wallet_address: wallet }),

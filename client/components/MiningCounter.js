@@ -22,7 +22,7 @@ export default function MiningCounter() {
   // Fetch unclaimed NUNs from backend
   const fetchUnclaimed = async () => {
     try {
-      const res = await fetch(`http://localhost:3030/unclaimed?session_id=${sessionId}`);
+  const res = await fetch(`https://blockchain-ps21.onrender.com/unclaimed?session_id=${sessionId}`);
       if (res.ok) {
         const data = await res.json();
         setUnclaimed(data.unclaimed || 0);
