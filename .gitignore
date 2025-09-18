@@ -1,0 +1,53 @@
+# Rust
+/target/
+**/target/
+Cargo.lock
+
+# Node.js
+node_modules/
+**/node_modules/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# VSCode
+.vscode/
+
+# Build
+/dist/
+/build/
+
+# Misc
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+
+# WASM
+*.wasm
+
+# Ignore test output
+*.out
+*.test
+
+# Ignore coverage
+coverage/
+
+# Ignore IDE
+.idea/
+*.iml
+
+# Ignore frontend build
+.next/
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
