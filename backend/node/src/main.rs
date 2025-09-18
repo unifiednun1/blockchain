@@ -74,7 +74,8 @@ async fn main() {
     let routes = mine.or(claim);
 
     // Start server
+    use std::net::SocketAddr;
     let port = std::env::var("PORT").unwrap_or_else(|_| "3030".to_string());
-    let addr = format!("0.0.0.0:{}", port);
-    warp::serve(routes).run(addr.parse().unwrap()).await;
+    let addr: SocketAddr = format!("0.0.0.0:{}", port).parse().expect("Invalid address");
+    warp::serve(routes).run(addr).await;
 }
